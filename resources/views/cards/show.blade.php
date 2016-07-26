@@ -3,5 +3,5 @@
 
 @section('content')
 
-<h1>THE WELCOME PAge</h1>
+<h1>{{$card->title}}</h1>
 @endsection

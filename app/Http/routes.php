@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/','PagesController@home');
+
+Route::get('cards','CardsController@index');
+Route::get('cards/{id}','CardsController@show');
+
+
+
