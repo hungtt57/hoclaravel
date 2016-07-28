@@ -21,12 +21,13 @@ class CreateDataTable extends Migration
 
         });
 
-              Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->string('username')->unique();
+            Schema::create('users', function (Blueprint $table) {
+             $table->increments('id');
+            $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password', 60);
+            $table->rememberToken();
+            $table->timestamps();
 
         });
 
@@ -47,6 +48,8 @@ class CreateDataTable extends Migration
      */
     public function down()
     {
-        Schema::drop('data');
+        Schema::drop('users');
+         Schema::drop('notes');
+          Schema::drop('cards');
     }
 }

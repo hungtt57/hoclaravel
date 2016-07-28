@@ -11,12 +11,18 @@ class NotesController extends Controller
 {
     public function store(Request $request,Card $card)
     {
+       $this->validate($request,[
+            'body' => 'required'
+            ]);
 
+        $note = new Note($request->all());
     	
     	$card->addNote(
-    		new Note($request->all())
+    		$note,1
     		);
-    	return back();
+    	return redirect()->back()
+              ->withInput($request->all())
+              ->withErrors($validator->errors()); 
     }
 
     public function edit(Note $note)
